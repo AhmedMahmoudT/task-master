@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { FaTrash } from "react-icons/fa"
+import { motion } from "motion/react"
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="min-h-screen bg-black text-white flex">
+      <div className="m-auto flex flex-col gap-10 items-center justify-center">
+        <h1 className="text-6xl font-light">Task Master</h1>
+        <div className="w-[80vw] h-[60vh]p-5 flex items-center justify-between">
+          <div className="bg-neutral-950 h-[55vh] w-[20vw] rounded-lg"></div>
+          <div className="bg-neutral-950 h-[55vh] w-[20vw] rounded-lg"></div>
+          <div className="bg-neutral-950 h-[55vh] w-[20vw] rounded-lg"></div>
+          <div className="border-4 border-red-500 h-[55vh] w-[10vw] rounded-lg flex items-center justify-center text-4xl bg-red-500/40 text-red-500">
+            <motion.div variants={trashVariants} initial="default" animate="hover">
+            <FaTrash />
+            </motion.div>
+          </div>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 
+const trashVariants = {
+  default: {
+    rotateZ: 0,
+  },
+  hover: {
+    rotateZ: [10,-10,10],
+    transition: {
+      repeat: Infinity,
+    }
+  },
+}
+
 export default App
+
