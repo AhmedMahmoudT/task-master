@@ -1,23 +1,21 @@
-import StepTitle from "./StepTitle"
-import Task from "./Task"
-import TrashButton from "./TrashButton"
+import { useState } from "react";
+import Column from "./Column"
+import MoveToTrash from "./MoveToTrash"
 
 const Kanban = () => {
+
+  const [tasks, setTasks] = useState({list:[
+    {id:1, content:"Task 1", step:"TODO"},
+    {id:2, content:"Task 2", step:"IN_PROGRESS"},
+    {id:3, content:"Task 3", step:"DONE"},
+  ]});
+
   return (
     <div className="w-[80vw] h-[70vh] p-5 flex items-center justify-between">
-          <div className="bg-neutral-950 h-full w-[20vw] rounded-lg flex flex-col gap-5 items-center">
-            <StepTitle title="TODO" />
-            <Task content="Add This" />
-          </div>
-          <div className="bg-neutral-950 h-full w-[20vw] rounded-lg flex flex-col gap-5 items-center">
-            <StepTitle title="IN PROGRESS" />
-            <Task content="Do This" />
-          </div>
-          <div className="bg-neutral-950 h-full w-[20vw] rounded-lg flex flex-col gap-5 items-center">
-            <StepTitle title="DONE" />
-            <Task content="Fix That" />
-          </div>
-          <TrashButton />
+          <Column title="TODO" step="TODO" tasks={tasks} setTasks={setTasks}/>
+          <Column title="IN PROGRESS" step="IN_PROGRESS" tasks={tasks} setTasks={setTasks}/>
+          <Column title="DONE" step="DONE" tasks={tasks} setTasks={setTasks}/>
+          <MoveToTrash />
         </div>
   )
 }
