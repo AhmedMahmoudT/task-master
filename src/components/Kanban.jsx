@@ -6,7 +6,7 @@ const Kanban = () => {
 
   const [tasks, setTasks] = useState({list:[
     {id:1, content:"Task 1", step:"TODO"},
-    {id:2, content:"Task 2", step:"IN_PROGRESS"},
+    {id:2, content:"Add this", step:"IN_PROGRESS"},
     {id:3, content:"Task 3", step:"DONE"},
   ]});
 
